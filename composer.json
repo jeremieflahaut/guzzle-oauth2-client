@@ -1,0 +1,29 @@
+{
+    "name": "jflahaut/guzzle-oauth2-client",
+    "description": "Guzzle oauth2 client api",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jeremie",
+            "email": "jeremieflahaut@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.3",
+        "guzzlehttp/guzzle": "^7.0.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "JFlahaut\\GuzzleOauth2Client\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "JFlahaut\\GuzzleOauth2Client\\GuzzleOauth2ClientServiceProvider"
+            ]
+        }
+    }
+}
