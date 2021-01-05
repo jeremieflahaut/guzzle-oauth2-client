@@ -6,16 +6,22 @@ source: Sainsburys / guzzle-oauth2-plugin
 
 ```php
 
-    $baseUri = 'https://coreg.r1a.eu';
+    use GuzzleHttp\Client;
+    use JFlahaut\GuzzleOauth2Client\GrantType\ClientCredentials;
+    use JFlahaut\GuzzleOauth2Client\Middleware\OauthMiddleware;
+    use JFlahaut\GuzzleOauth2Client\Oauth2Client;
+
+
+    $baseUri = 'https://api.example.com';
 
     $config = [
-        'client_id' => '2',
-        'client_secret' => 'amPi2xX4ACTHpb7x59AI9cUWy427p40ByqlE4JrN',
+        'client_id' => 'xxxxx',
+        'client_secret' => 'xxxxx',
         'token_url' => '/oauth/token',
         'auth_location' => 'json'
     ];
 
-    $oauthClient = new \GuzzleHttp\Client([
+    $oauthClient = new Client([
         'base_uri' => $baseUri,
     ]);
 
@@ -26,20 +32,6 @@ source: Sainsburys / guzzle-oauth2-plugin
         'base_uri' => $baseUri,
     ]);
 
-    try {
-        $client->postUser([
-            'email' => 'testadv2@test.fr',
-            'civility' => 'm',
-            'lastname' => 'Testb',
-            'firstname' => 'Testa',
-            'birthdate' => '1975-01-01',
-            'src' => 'croixrouge'
-        ]);
-    } catch (ClientException $e) {
-        dd(Utils::jsonDecode($e->getResponse()->getBody()));
-    } catch (\Exception $e) {
-        
-    }
 
 ```
 
