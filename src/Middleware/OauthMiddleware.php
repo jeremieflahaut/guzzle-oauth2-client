@@ -5,20 +5,34 @@ namespace JFlahaut\GuzzleOauth2Client\Middleware;
 
 use GuzzleHttp\ClientInterface;
 use JFlahaut\GuzzleOauth2Client\AccessToken;
-use JFlahaut\GuzzleOauth2Client\GrantType\GrandTypeInterface;
+use JFlahaut\GuzzleOauth2Client\GrantType\GrantTypeInterface;
 use Psr\Http\Message\RequestInterface;
 use Closure;
 use Psr\Http\Message\ResponseInterface;
 
 class OauthMiddleware extends Middleware
 {
+    /**
+     * @var ClientInterface
+     */
     protected $client;
 
+    /**
+     * @var GrantTypeInterface
+     */
     protected $grantType;
 
+    /**
+     * @var
+     */
     protected $accessToken;
 
-    public function __construct(ClientInterface $client, GrandTypeInterface $grantType)
+    /**
+     * OauthMiddleware constructor.
+     * @param ClientInterface $client
+     * @param GrantTypeInterface $grantType
+     */
+    public function __construct(ClientInterface $client, GrantTypeInterface $grantType)
     {
         $this->client = $client;
 
@@ -26,6 +40,9 @@ class OauthMiddleware extends Middleware
 
     }
 
+    /**
+     * @return Closure
+     */
     public function onBefore(): Closure
     {
         return function (callable $handler) {
@@ -42,7 +59,11 @@ class OauthMiddleware extends Middleware
         };
     }
 
-    public function onError(int $limit = 3)
+    /**
+     * @param int $limit
+     * @return Closure
+     */
+    public function onError(int $limit = 3): Closure
     {
 
         $calls = 0;
@@ -74,6 +95,9 @@ class OauthMiddleware extends Middleware
         };
     }
 
+    /**
+     * @return AccessToken
+     */
     protected function getAccessToken(): AccessToken
     {
         if(!($this->accessToken instanceof AccessToken) || $this->accessToken->isExpired()) {
@@ -83,7 +107,10 @@ class OauthMiddleware extends Middleware
         return $this->accessToken;
     }
 
-    protected function acquireAccessToken()
+    /**
+     * @return AccessToken|null
+     */
+    protected function acquireAccessToken(): ?AccessToken
     {
         if (!$this->accessToken || $this->accessToken->isExpired()) {
             $this->accessToken = $this->grantType->getToken();

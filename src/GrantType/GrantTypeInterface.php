@@ -5,12 +5,12 @@ namespace JFlahaut\GuzzleOauth2Client\GrantType;
 
 use JFlahaut\GuzzleOauth2Client\AccessToken;
 
-interface GrandTypeInterface
+interface GrantTypeInterface
 {
     /**
      * @return string
      */
-    public function getGrandType(): string;
+    public function getGrantType(): string;
 
     /**
      * @return AccessToken|null

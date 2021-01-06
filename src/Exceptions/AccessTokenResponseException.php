@@ -9,6 +9,12 @@ use Throwable;
 
 class AccessTokenResponseException extends Exception
 {
+    /**
+     * AccessTokenResponseException constructor.
+     * @param ResponseInterface $response
+     * @param int $code
+     * @param Throwable|null $previous
+     */
     public function __construct(ResponseInterface $response, $code = 0, Throwable $previous = null)
     {
         $message = 'Invalid Access_token Response: ' . $response->getBody()->getContents();

@@ -7,8 +7,15 @@ use Closure;
 
 interface MiddlewareInterface
 {
+    /**
+     * @return Closure
+     */
     public function onBefore(): Closure;
 
-    public function onError(int $limit = 3);
+    /**
+     * @param int $limit
+     * @return mixed
+     */
+    public function onError(int $limit = 3): Closure;
 
 }

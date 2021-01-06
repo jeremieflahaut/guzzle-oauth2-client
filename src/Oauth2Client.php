@@ -10,6 +10,9 @@ use JFlahaut\GuzzleOauth2Client\Middleware\MiddlewareInterface;
 class Oauth2Client
 {
 
+    /**
+     * @var HttpClient
+     */
     protected $client;
 
     public function __construct(MiddlewareInterface $middleware, array $config)
@@ -26,11 +29,23 @@ class Oauth2Client
         $this->client = new HttpClient($config);
     }
 
+    /**
+     * @param MiddlewareInterface $middleware
+     * @param array $config
+     * @return Oauth2Client
+     */
     public static function create(MiddlewareInterface $middleware, array $config): Oauth2Client
     {
         return new static($middleware, $config);
     }
 
+    /**
+     * business method example
+     *
+     * @param $data
+     * @return array
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     public function postUser($data): array
     {
         try {
