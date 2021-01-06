@@ -1,6 +1,6 @@
 <?php
 
-namespace JFlahaut\GuzzleOauth2Client;
+namespace JFlahaut\GuzzleOauth2Client\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

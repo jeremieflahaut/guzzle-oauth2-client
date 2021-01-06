@@ -22,7 +22,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "JFlahaut\\GuzzleOauth2Client\\GuzzleOauth2ClientServiceProvider"
+                "JFlahaut\\GuzzleOauth2Client\\Providers\\GuzzleOauth2ClientServiceProvider"
             ]
         }
     }
