@@ -6,7 +6,6 @@ use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Utils;
 use JFlahaut\GuzzleOauth2Client\Middleware\MiddlewareInterface;
-use Psr\Http\Message\ResponseInterface;
 
 class Oauth2Client
 {
